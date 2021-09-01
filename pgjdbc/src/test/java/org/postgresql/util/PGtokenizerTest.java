@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-class PGtokenizerTest {
+class PGtokenizerTest extends SetUpTearDownIMPL {
 
   @Test
   void tokenize() {

@@ -11,6 +11,8 @@ import org.postgresql.ds.common.BaseDataSource;
 
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.IOException;
 
 import javax.naming.NamingException;
@@ -18,7 +20,7 @@ import javax.naming.NamingException;
 /**
 * tests that failover urls survive the parse/rebuild roundtrip with and without specific ports
 */
-public class BaseDataSourceFailoverUrlsTest {
+public class BaseDataSourceFailoverUrlsTest extends SetUpTearDownIMPL {
 
   private static final String DEFAULT_PORT = "5432";
 

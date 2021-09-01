@@ -10,7 +10,9 @@ import org.postgresql.jdbc.PgDatabaseMetaData;
 
 import org.junit.Test;
 
-public class TestACL {
+import org.postgresql.util.SetUpTearDownIMPL;
+
+public class TestACL extends SetUpTearDownIMPL {
 
   @Test
   public void testParseACL() {

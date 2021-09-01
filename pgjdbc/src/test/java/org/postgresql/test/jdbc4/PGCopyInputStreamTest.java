@@ -16,6 +16,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -24,7 +26,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PGCopyInputStreamTest {
+public class PGCopyInputStreamTest extends SetUpTearDownIMPL {
   private static final int NUM_TEST_ROWS = 4;
   /**
    * COPY .. TO STDOUT terminates each row of data with a LF regardless of platform so the size of

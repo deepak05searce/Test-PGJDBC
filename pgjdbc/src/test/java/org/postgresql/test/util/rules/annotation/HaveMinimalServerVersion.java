@@ -5,6 +5,8 @@
 
 package org.postgresql.test.util.rules.annotation;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
 

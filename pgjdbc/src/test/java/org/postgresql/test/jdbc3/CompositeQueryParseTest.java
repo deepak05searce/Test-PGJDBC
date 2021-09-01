@@ -15,10 +15,12 @@ import org.postgresql.core.SqlCommandType;
 
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.SQLException;
 import java.util.List;
 
-public class CompositeQueryParseTest {
+public class CompositeQueryParseTest extends SetUpTearDownIMPL {
 
   @Test
   public void testEmptyQuery() {

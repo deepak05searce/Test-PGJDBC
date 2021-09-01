@@ -21,13 +21,15 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 @Category(Replication.class)
 @HaveMinimalServerVersion("9.4")
-public class ReplicationConnectionTest {
+public class ReplicationConnectionTest extends SetUpTearDownIMPL {
   @Rule
   public ServerVersionRule versionRule = new ServerVersionRule();
 

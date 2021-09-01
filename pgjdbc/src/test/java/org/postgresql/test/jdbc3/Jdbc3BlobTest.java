@@ -16,6 +16,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -26,7 +28,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Jdbc3BlobTest {
+public class Jdbc3BlobTest extends SetUpTearDownIMPL {
   private static final String TABLE = "blobtest";
   private static final String INSERT = "INSERT INTO " + TABLE + " VALUES (1, lo_creat(-1))";
   private static final String SELECT = "SELECT ID, DATA FROM " + TABLE + " WHERE ID = 1";

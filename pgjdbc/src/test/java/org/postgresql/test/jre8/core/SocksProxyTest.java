@@ -12,6 +12,8 @@ import org.postgresql.test.TestUtil;
 import org.junit.After;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -19,7 +21,7 @@ import java.sql.DriverManager;
  * @author Joe Kutner on 10/9/17.
  *         Twitter: @codefinger
  */
-public class SocksProxyTest {
+public class SocksProxyTest extends SetUpTearDownIMPL {
 
   @After
   public void cleanup() {

@@ -17,6 +17,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.net.SocketException;
@@ -31,7 +33,7 @@ import java.util.Properties;
 import javax.net.ssl.SSLHandshakeException;
 
 @RunWith(Parameterized.class)
-public class SslTest {
+public class SslTest extends SetUpTearDownIMPL {
   enum Hostname {
     GOOD("localhost"),
     BAD("127.0.0.1"),

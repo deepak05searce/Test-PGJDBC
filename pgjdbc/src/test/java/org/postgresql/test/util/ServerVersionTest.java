@@ -10,7 +10,9 @@ import org.postgresql.core.ServerVersion;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ServerVersionTest {
+import org.postgresql.util.SetUpTearDownIMPL;
+
+public class ServerVersionTest extends SetUpTearDownIMPL {
   @Test
   public void versionIncreases() {
     ServerVersion prev = null;

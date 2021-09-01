@@ -19,6 +19,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
@@ -34,7 +36,7 @@ import java.sql.Types;
  * Some simple tests based on problems reported by users. Hopefully these will help prevent previous
  * problems from re-occurring ;-)
  */
-public class BlobTest {
+public class BlobTest extends SetUpTearDownIMPL {
   private static final int LOOP = 0; // LargeObject API using loop
   private static final int NATIVE_STREAM = 1; // LargeObject API using OutputStream
 

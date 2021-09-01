@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * Tests unusual binary representations of numeric values.
  * @author Brett Okken
  */
-public class UnusualBigDecimalByteConverterTest {
+public class UnusualBigDecimalByteConverterTest extends SetUpTearDownIMPL {
 
   /**
    * Typically a number < 1 would have sections of leading '0' values represented in weight

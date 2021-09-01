@@ -22,6 +22,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,7 +39,7 @@ import java.util.Properties;
  * TestCase to test the internal functionality of org.postgresql.jdbc2.Connection and it's
  * superclass.
  */
-public class ConnectionTest {
+public class ConnectionTest extends SetUpTearDownIMPL {
   private Connection con;
 
   // Set up the fixture for this testcase: the tables for this test.

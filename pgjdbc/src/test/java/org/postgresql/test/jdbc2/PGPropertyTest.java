@@ -18,6 +18,7 @@ import org.postgresql.ds.PGSimpleDataSource;
 import org.postgresql.ds.common.BaseDataSource;
 import org.postgresql.jdbc.AutoSave;
 import org.postgresql.test.TestUtil;
+import org.postgresql.util.SetUpTearDownIMPL;
 import org.postgresql.util.URLCoder;
 
 import org.junit.After;
@@ -33,7 +34,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.TreeMap;
 
-public class PGPropertyTest {
+public class PGPropertyTest extends SetUpTearDownIMPL {
 
   /**
    * Some tests modify the "ssl" system property. To not disturb other test cases in the suite store

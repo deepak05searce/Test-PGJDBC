@@ -12,10 +12,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.util.Arrays;
 
 @RunWith(Parameterized.class)
-public class OidToStringTest {
+public class OidToStringTest extends SetUpTearDownIMPL {
   @Parameterized.Parameter(0)
   public int value;
   @Parameterized.Parameter(1)

@@ -15,13 +15,15 @@ import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class CustomizeDefaultFetchSizeTest {
+public class CustomizeDefaultFetchSizeTest extends SetUpTearDownIMPL {
 
   private Connection connection;
 

@@ -15,12 +15,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.lang.management.ManagementFactory;
 import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class PGPropertyMaxResultBufferParserTest {
+public class PGPropertyMaxResultBufferParserTest extends SetUpTearDownIMPL {
 
   @Parameterized.Parameter(0)
   public String valueToParse;

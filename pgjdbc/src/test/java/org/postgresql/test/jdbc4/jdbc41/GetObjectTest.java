@@ -29,6 +29,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.InetAddress;
@@ -54,7 +56,7 @@ import java.util.UUID;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialClob;
 
-public class GetObjectTest {
+public class GetObjectTest extends SetUpTearDownIMPL {
   private static final TimeZone UTC = TimeZone.getTimeZone("UTC"); // +0000 always
   private static final TimeZone GMT03 = TimeZone.getTimeZone("GMT+03"); // +0300 always
   private static final TimeZone GMT05 = TimeZone.getTimeZone("GMT-05"); // -0500 always

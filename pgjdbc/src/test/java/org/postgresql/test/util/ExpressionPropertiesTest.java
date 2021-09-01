@@ -10,9 +10,11 @@ import org.postgresql.util.ExpressionProperties;
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.util.Properties;
 
-public class ExpressionPropertiesTest {
+public class ExpressionPropertiesTest extends SetUpTearDownIMPL {
   @Test
   public void simpleReplace() {
     ExpressionProperties p = new ExpressionProperties();

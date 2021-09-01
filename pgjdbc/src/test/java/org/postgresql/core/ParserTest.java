@@ -14,6 +14,8 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -21,7 +23,7 @@ import java.util.List;
  * Test cases for the Parser.
  * @author Jeremy Whiting jwhiting@redhat.com
  */
-public class ParserTest {
+public class ParserTest extends SetUpTearDownIMPL {
 
   /**
    * Test to make sure delete command is detected by parser and detected via

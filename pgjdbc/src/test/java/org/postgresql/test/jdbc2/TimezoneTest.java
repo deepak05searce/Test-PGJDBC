@@ -16,6 +16,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -51,7 +53,7 @@ import java.util.TimeZone;
  *
  * <p>(this matches what we must support per JDBC 3.0, tables B-5 and B-6)</p>
  */
-public class TimezoneTest {
+public class TimezoneTest extends SetUpTearDownIMPL {
   private static final int DAY = 24 * 3600 * 1000;
   private static final TimeZone saveTZ = TimeZone.getDefault();
   private static final int PREPARE_THRESHOLD = 2;

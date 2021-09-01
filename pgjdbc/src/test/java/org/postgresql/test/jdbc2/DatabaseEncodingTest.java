@@ -19,6 +19,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,7 +34,7 @@ import java.util.Arrays;
  * Ensure that we can do a round-trip of all server-supported unicode values without trashing them,
  * and that bad encodings are detected.
  */
-public class DatabaseEncodingTest {
+public class DatabaseEncodingTest extends SetUpTearDownIMPL {
   private static final int STEP = 100;
 
   private Connection con;

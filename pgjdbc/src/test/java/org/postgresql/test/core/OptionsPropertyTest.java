@@ -13,12 +13,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class OptionsPropertyTest {
+public class OptionsPropertyTest extends SetUpTearDownIMPL {
   private static final String schemaName = "options_property_test";
   private static final String optionsValue = "-c search_path=" + schemaName;
 

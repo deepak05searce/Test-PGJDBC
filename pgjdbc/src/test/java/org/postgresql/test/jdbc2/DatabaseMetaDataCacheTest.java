@@ -10,6 +10,7 @@ import static org.junit.Assert.assertEquals;
 import org.postgresql.core.TypeInfo;
 import org.postgresql.jdbc.PgConnection;
 import org.postgresql.test.TestUtil;
+import org.postgresql.util.SetUpTearDownIMPL;
 import org.postgresql.util.TestLogHandler;
 
 import org.junit.After;
@@ -28,7 +29,7 @@ import java.util.regex.Pattern;
  * Tests for caching of DatabaseMetadata
  *
  */
-public class DatabaseMetaDataCacheTest {
+public class DatabaseMetaDataCacheTest extends SetUpTearDownIMPL {
   private PgConnection con;
   private TestLogHandler log;
   private Logger driverLogger;

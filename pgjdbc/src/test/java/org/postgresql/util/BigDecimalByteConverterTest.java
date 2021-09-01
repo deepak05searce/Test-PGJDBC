@@ -22,7 +22,7 @@ import java.util.Collection;
  * @author Brett Okken
  */
 @RunWith(Parameterized.class)
-public class BigDecimalByteConverterTest {
+public class BigDecimalByteConverterTest extends SetUpTearDownIMPL {
 
   @Parameter
   public BigDecimal number;

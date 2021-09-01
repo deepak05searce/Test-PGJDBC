@@ -13,10 +13,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.util.Arrays;
 
 @RunWith(Parameterized.class)
-public class LibPQFactoryHostNameTest {
+public class LibPQFactoryHostNameTest extends SetUpTearDownIMPL {
 
   private final String hostname;
   private final String pattern;

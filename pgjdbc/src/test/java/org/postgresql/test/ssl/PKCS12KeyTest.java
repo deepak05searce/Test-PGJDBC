@@ -11,10 +11,12 @@ import org.postgresql.test.TestUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.util.Properties;
 
-public class PKCS12KeyTest {
+public class PKCS12KeyTest extends SetUpTearDownIMPL {
   @Test
   public void TestGoodClientP12() throws Exception {
     TestUtil.assumeSslTestsEnabled();

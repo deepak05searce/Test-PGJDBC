@@ -15,6 +15,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -25,7 +27,7 @@ import java.util.Properties;
  * This test suite will check the behaviour of the findColumnIndex method. This is testing the
  * behaviour when sanitiser is disabled.
  */
-public class ColumnSanitiserDisabledTest {
+public class ColumnSanitiserDisabledTest extends SetUpTearDownIMPL {
   private Connection conn;
 
   @Before

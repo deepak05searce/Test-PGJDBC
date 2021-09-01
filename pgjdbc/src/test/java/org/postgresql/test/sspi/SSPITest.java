@@ -19,6 +19,8 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Properties;
@@ -29,7 +31,7 @@ import java.util.Properties;
  * to authenticate as the "sspiusername" in the build
  * configuration.
  */
-public class SSPITest {
+public class SSPITest extends SetUpTearDownIMPL {
 
   /*
    * SSPI only exists on Windows.

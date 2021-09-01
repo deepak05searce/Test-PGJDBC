@@ -15,11 +15,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class FixedLengthOutputStreamTest {
+public class FixedLengthOutputStreamTest extends SetUpTearDownIMPL {
 
   private ByteArrayOutputStream targetStream;
   private FixedLengthOutputStream fixedLengthStream;

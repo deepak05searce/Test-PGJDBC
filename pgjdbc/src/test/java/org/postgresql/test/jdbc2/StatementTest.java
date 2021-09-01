@@ -27,6 +27,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -51,7 +53,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /*
  * Test for getObject
  */
-public class StatementTest {
+public class StatementTest extends SetUpTearDownIMPL {
   private Connection con;
 
   @Before

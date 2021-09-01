@@ -15,11 +15,13 @@ import org.postgresql.util.HostSpec;
 import org.junit.After;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 /**
  * @author Joe Kutner on 10/19/17.
  *         Twitter: @codefinger
  */
-public class HostSpecTest {
+public class HostSpecTest extends SetUpTearDownIMPL {
 
   @After
   public void cleanup() {

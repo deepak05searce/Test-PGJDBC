@@ -12,10 +12,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.util.Arrays;
 
 @RunWith(Parameterized.class)
-public class OidValueOfTest {
+public class OidValueOfTest extends SetUpTearDownIMPL {
   @Parameterized.Parameter(0)
   public int expected;
   @Parameterized.Parameter(1)

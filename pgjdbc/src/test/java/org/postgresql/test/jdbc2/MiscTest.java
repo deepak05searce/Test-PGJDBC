@@ -13,6 +13,8 @@ import org.postgresql.test.TestUtil;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.sql.Connection;
@@ -26,7 +28,7 @@ import java.sql.Statement;
  * problems from re-occurring ;-)
  *
  */
-public class MiscTest {
+public class MiscTest extends SetUpTearDownIMPL {
 
   /*
    * Some versions of the driver would return rs as a null?

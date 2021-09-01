@@ -12,11 +12,13 @@ import org.postgresql.jdbc.TimestampUtils;
 
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.TimeZone;
 
-public class TimestampUtilsTest {
+public class TimestampUtilsTest extends SetUpTearDownIMPL {
   @Test
   public void testToStringOfLocalTime() {
     TimestampUtils timestampUtils = createTimestampUtils();

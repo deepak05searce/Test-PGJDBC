@@ -13,6 +13,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -21,7 +23,7 @@ import java.sql.Statement;
  * Some simple tests to check that the required components needed for JBuilder stay working
  *
  */
-public class JBuilderTest {
+public class JBuilderTest extends SetUpTearDownIMPL {
 
   // Set up the fixture for this testcase: the tables for this test.
   @Before

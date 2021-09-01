@@ -25,6 +25,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -41,7 +43,7 @@ import java.sql.Statement;
 /**
  * @author kato@iki.fi
  */
-public class CopyTest {
+public class CopyTest extends SetUpTearDownIMPL {
   private Connection con;
   private CopyManager copyAPI;
   private String copyParams;

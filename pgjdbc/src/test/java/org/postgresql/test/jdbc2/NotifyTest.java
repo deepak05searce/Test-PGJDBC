@@ -18,12 +18,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
 
-public class NotifyTest {
+public class NotifyTest extends SetUpTearDownIMPL {
   private Connection conn;
 
   @Before

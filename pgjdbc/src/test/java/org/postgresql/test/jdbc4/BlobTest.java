@@ -16,6 +16,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -29,7 +31,7 @@ import java.sql.Statement;
  * This test-case is only for JDBC4 blob methods. Take a look at
  * {@link org.postgresql.test.jdbc2.BlobTest} for base tests concerning blobs
  */
-public class BlobTest {
+public class BlobTest extends SetUpTearDownIMPL {
 
   private Connection conn;
 

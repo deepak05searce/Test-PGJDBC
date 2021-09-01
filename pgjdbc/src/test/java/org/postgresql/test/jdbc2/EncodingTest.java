@@ -12,6 +12,8 @@ import org.postgresql.core.Encoding;
 
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.Reader;
@@ -20,7 +22,7 @@ import java.util.Locale;
 /**
  * Tests for the Encoding class.
  */
-public class EncodingTest {
+public class EncodingTest extends SetUpTearDownIMPL {
 
   @Test
   public void testCreation() throws Exception {

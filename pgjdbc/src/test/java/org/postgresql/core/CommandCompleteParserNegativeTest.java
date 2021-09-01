@@ -12,10 +12,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.util.Arrays;
 
 @RunWith(Parameterized.class)
-public class CommandCompleteParserNegativeTest {
+public class CommandCompleteParserNegativeTest extends SetUpTearDownIMPL {
 
   @Parameterized.Parameter(0)
   public String input;

@@ -13,12 +13,14 @@ import org.postgresql.test.TestUtil;
 
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.concurrent.TimeUnit;
 
-public class NetworkTimeoutTest {
+public class NetworkTimeoutTest extends SetUpTearDownIMPL {
   @Test
   public void testSetNetworkTimeout() throws Exception {
     Connection conn = TestUtil.openDB();

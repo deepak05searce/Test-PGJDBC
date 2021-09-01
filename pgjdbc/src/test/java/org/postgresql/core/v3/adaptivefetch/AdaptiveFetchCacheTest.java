@@ -17,6 +17,8 @@ import org.postgresql.core.SqlCommand;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.util.Map;
@@ -25,7 +27,7 @@ import java.util.Properties;
 /**
  * Unit tests for AdaptiveFetchCache class.
  */
-public class AdaptiveFetchCacheTest {
+public class AdaptiveFetchCacheTest extends SetUpTearDownIMPL {
 
   private AdaptiveFetchCache adaptiveFetchCache;
   private int size;

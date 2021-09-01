@@ -23,6 +23,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
@@ -45,7 +47,7 @@ import java.util.Set;
  *
  */
 @RunWith(Parameterized.class)
-public class DatabaseMetaDataTest {
+public class DatabaseMetaDataTest extends SetUpTearDownIMPL {
   private Connection con;
   private final BinaryMode binaryMode;
 

@@ -15,12 +15,14 @@ import org.postgresql.util.ByteStreamWriter;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 
-public class ByteBufferByteStreamWriterTest {
+public class ByteBufferByteStreamWriterTest extends SetUpTearDownIMPL {
 
   private ByteArrayOutputStream targetStream;
   private byte[] data;
