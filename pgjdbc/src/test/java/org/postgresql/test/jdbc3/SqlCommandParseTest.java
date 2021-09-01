@@ -15,12 +15,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
 @RunWith(Parameterized.class)
-public class SqlCommandParseTest {
+public class SqlCommandParseTest extends SetUpTearDownIMPL {
   @Parameterized.Parameter(0)
   public SqlCommandType type;
   @Parameterized.Parameter(1)

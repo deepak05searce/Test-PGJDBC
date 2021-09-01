@@ -20,6 +20,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +31,7 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.util.Properties;
 
-public class SchemaTest {
+public class SchemaTest extends SetUpTearDownIMPL {
   private Connection conn;
   private boolean dropUserSchema;
 

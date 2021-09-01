@@ -17,6 +17,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -29,7 +31,7 @@ import java.util.Random;
 /**
  * @author amozhenin on 30.09.2015.
  */
-public class CopyLargeFileTest {
+public class CopyLargeFileTest extends SetUpTearDownIMPL {
 
   private static final int FEED_COUNT = 10;
 

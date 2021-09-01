@@ -15,11 +15,13 @@ import org.junit.After;
 import org.junit.Assume;
 import org.junit.Before;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class BaseTest4 {
+public class BaseTest4 extends SetUpTearDownIMPL {
 
   public enum BinaryMode {
     REGULAR, FORCE

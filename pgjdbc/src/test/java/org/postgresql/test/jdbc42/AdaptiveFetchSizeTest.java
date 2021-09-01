@@ -16,6 +16,8 @@ import org.junit.After;
 import org.junit.Assume;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.lang.management.ManagementFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +28,7 @@ import java.util.Properties;
 /**
  * Integration tests for adaptive fetch process.
  */
-public class AdaptiveFetchSizeTest {
+public class AdaptiveFetchSizeTest extends SetUpTearDownIMPL {
 
   private Connection connection;
   private PreparedStatement statement;

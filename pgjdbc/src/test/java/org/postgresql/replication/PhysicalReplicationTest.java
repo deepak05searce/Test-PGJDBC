@@ -25,6 +25,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.nio.ByteBuffer;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -34,7 +36,7 @@ import java.util.Arrays;
 
 @Category(Replication.class)
 @HaveMinimalServerVersion("9.4")
-public class PhysicalReplicationTest {
+public class PhysicalReplicationTest extends SetUpTearDownIMPL {
 
   private static final String SLOT_NAME = "pgjdbc_physical_replication_slot";
 

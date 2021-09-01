@@ -13,10 +13,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.util.Arrays;
 
 @RunWith(Parameterized.class)
-public class ServerVersionParseTest {
+public class ServerVersionParseTest extends SetUpTearDownIMPL {
 
   private final String versionString;
   private final int versionNum;

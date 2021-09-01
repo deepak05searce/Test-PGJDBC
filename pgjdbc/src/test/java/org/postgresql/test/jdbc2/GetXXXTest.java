@@ -15,6 +15,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +29,7 @@ import java.util.HashMap;
 /*
  * Test for getObject
  */
-public class GetXXXTest {
+public class GetXXXTest extends SetUpTearDownIMPL {
   private Connection con = null;
 
   @Before

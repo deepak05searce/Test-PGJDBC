@@ -9,6 +9,7 @@ import org.postgresql.jdbc2.optional.ConnectionPool;
 import org.postgresql.jdbc2.optional.PoolingDataSource;
 import org.postgresql.jdbc2.optional.SimpleDataSource;
 import org.postgresql.osgi.PGDataSourceFactory;
+import org.postgresql.util.SetUpTearDownIMPL;
 import org.postgresql.xa.PGXADataSource;
 
 import org.junit.Assert;
@@ -23,7 +24,7 @@ import javax.sql.ConnectionPoolDataSource;
 import javax.sql.DataSource;
 import javax.sql.XADataSource;
 
-public class PGDataSourceFactoryTest {
+public class PGDataSourceFactoryTest extends SetUpTearDownIMPL {
 
   private DataSourceFactory dataSourceFactory;
 

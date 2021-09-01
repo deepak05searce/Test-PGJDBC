@@ -17,6 +17,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
@@ -29,7 +31,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 @HaveMinimalServerVersion("9.4")
-public class ConnectionValidTest {
+public class ConnectionValidTest extends SetUpTearDownIMPL {
 
   @Rule
   public Timeout timeout = new Timeout(30, TimeUnit.SECONDS);

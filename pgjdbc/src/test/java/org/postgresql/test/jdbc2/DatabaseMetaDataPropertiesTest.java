@@ -16,6 +16,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
@@ -25,7 +27,7 @@ import java.sql.SQLException;
  * properties. Methods which return a ResultSet are tested elsewhere. This avoids a complicated
  * setUp/tearDown for something like assertTrue(dbmd.nullPlusNonNullIsNull());
  */
-public class DatabaseMetaDataPropertiesTest {
+public class DatabaseMetaDataPropertiesTest extends SetUpTearDownIMPL {
   private Connection con;
 
   @Before

@@ -14,13 +14,15 @@ import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.net.NoRouteToHostException;
 import java.net.SocketTimeoutException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class ConnectTimeoutTest {
+public class ConnectTimeoutTest extends SetUpTearDownIMPL {
   // The IP below is non-routable (see http://stackoverflow.com/a/904609/1261287)
   private static final String UNREACHABLE_HOST = "10.255.255.1";
   private static final String UNREACHABLE_URL = "jdbc:postgresql://" + UNREACHABLE_HOST + ":5432/test";

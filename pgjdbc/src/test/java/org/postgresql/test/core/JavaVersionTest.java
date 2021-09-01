@@ -10,7 +10,9 @@ import org.postgresql.core.JavaVersion;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class JavaVersionTest {
+import org.postgresql.util.SetUpTearDownIMPL;
+
+public class JavaVersionTest extends SetUpTearDownIMPL {
   @Test
   public void testGetRuntimeVersion() {
     String currentVersion = System.getProperty("java.version");

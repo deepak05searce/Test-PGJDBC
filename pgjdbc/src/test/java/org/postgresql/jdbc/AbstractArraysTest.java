@@ -23,6 +23,7 @@ import org.postgresql.largeobject.LargeObjectManager;
 import org.postgresql.replication.PGReplicationConnection;
 import org.postgresql.util.LruCache;
 import org.postgresql.util.PGobject;
+import org.postgresql.util.SetUpTearDownIMPL;
 import org.postgresql.xml.PGXmlFactoryFactory;
 
 import org.junit.Test;
@@ -48,7 +49,7 @@ import java.util.TimerTask;
 import java.util.concurrent.Executor;
 import java.util.logging.Logger;
 
-public abstract class AbstractArraysTest<A> {
+public abstract class AbstractArraysTest<A> extends SetUpTearDownIMPL {
 
   private static final BaseConnection ENCODING_CONNECTION = new EncodingConnection(Encoding.getJVMEncoding("utf-8"));
 

@@ -11,12 +11,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @RunWith(Parameterized.class)
-public class UTF8EncodingTest {
+public class UTF8EncodingTest extends SetUpTearDownIMPL {
 
   private static final int STEP = 8 * 1024;
 

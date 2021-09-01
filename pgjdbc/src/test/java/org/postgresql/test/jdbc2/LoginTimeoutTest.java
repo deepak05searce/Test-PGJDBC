@@ -13,6 +13,8 @@ import org.postgresql.test.TestUtil;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -23,7 +25,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class LoginTimeoutTest {
+public class LoginTimeoutTest extends SetUpTearDownIMPL {
 
   @Before
   public void setUp() throws Exception {

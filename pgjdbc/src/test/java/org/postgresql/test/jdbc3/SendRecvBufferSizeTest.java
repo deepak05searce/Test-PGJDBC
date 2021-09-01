@@ -11,11 +11,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SendRecvBufferSizeTest {
+public class SendRecvBufferSizeTest extends SetUpTearDownIMPL {
 
   private Connection conn;
 

@@ -15,6 +15,8 @@ import org.postgresql.test.TestUtil;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -22,7 +24,7 @@ import java.sql.Statement;
  * TestCase to test the internal functionality of org.postgresql.jdbc2.DatabaseMetaData
  *
  */
-public class SearchPathLookupTest {
+public class SearchPathLookupTest extends SetUpTearDownIMPL {
   private BaseConnection con;
 
   @Before

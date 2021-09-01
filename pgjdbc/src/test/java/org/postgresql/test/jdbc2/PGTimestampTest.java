@@ -18,6 +18,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +34,7 @@ import java.util.TimeZone;
  * Tests {@link PGTimestamp} in various scenarios including setTimestamp, setObject for both
  * {@code timestamp with time zone} and {@code timestamp without time zone} data types.
  */
-public class PGTimestampTest {
+public class PGTimestampTest extends SetUpTearDownIMPL {
   /**
    * The name of the test table.
    */

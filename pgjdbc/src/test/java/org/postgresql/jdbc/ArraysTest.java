@@ -12,10 +12,12 @@ import org.postgresql.util.PSQLException;
 
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.math.BigDecimal;
 import java.sql.SQLFeatureNotSupportedException;
 
-public class ArraysTest {
+public class ArraysTest extends SetUpTearDownIMPL {
 
   @Test(expected = PSQLException.class)
   public void testNonArrayNotSupported() throws Exception {

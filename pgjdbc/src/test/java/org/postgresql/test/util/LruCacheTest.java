@@ -14,6 +14,8 @@ import org.postgresql.util.LruCache;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.SQLException;
 import java.util.ArrayDeque;
 import java.util.Arrays;
@@ -22,7 +24,7 @@ import java.util.Deque;
 /**
  * Tests {@link org.postgresql.util.LruCache}.
  */
-public class LruCacheTest {
+public class LruCacheTest extends SetUpTearDownIMPL {
 
   private static class Entry implements CanEstimateSize {
     private final int id;

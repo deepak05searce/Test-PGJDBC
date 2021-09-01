@@ -19,7 +19,7 @@ import java.io.StringReader;
 import java.nio.charset.MalformedInputException;
 import java.util.Arrays;
 
-public class ReaderInputStreamTest {
+public class ReaderInputStreamTest extends SetUpTearDownIMPL {
   // 132878 = U+2070E - chosen because it is the first supplementary character
   // in the International Ideographic Core (IICore)
   // see http://www.i18nguy.com/unicode/supplementary-test.html for further explanation

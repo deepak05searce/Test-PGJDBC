@@ -14,12 +14,14 @@ import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class LogServerMessagePropertyTest {
+public class LogServerMessagePropertyTest extends SetUpTearDownIMPL {
   private static final String PRIMARY_KEY_NAME = "lms_test_pk";
   private static final String CREATE_TABLE_SQL =
       "CREATE TABLE pg_temp.lms_test ("

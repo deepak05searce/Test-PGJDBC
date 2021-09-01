@@ -10,13 +10,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @RunWith(Parameterized.class)
-public class ReturningParserTest {
+public class ReturningParserTest extends SetUpTearDownIMPL {
   private final String columnName;
   private final String returning;
   private final String prefix;

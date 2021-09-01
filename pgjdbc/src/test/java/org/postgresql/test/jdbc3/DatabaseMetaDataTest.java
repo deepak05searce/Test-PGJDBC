@@ -14,13 +14,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Types;
 
-public class DatabaseMetaDataTest {
+public class DatabaseMetaDataTest extends SetUpTearDownIMPL {
 
   private Connection conn;
 

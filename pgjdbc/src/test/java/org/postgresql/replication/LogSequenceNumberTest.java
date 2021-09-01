@@ -15,8 +15,10 @@ import org.postgresql.test.Replication;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 @Category(Replication.class)
-public class LogSequenceNumberTest {
+public class LogSequenceNumberTest extends SetUpTearDownIMPL {
   @Test
   public void testNotNullWhenCreateFromStr() throws Exception {
     LogSequenceNumber result = LogSequenceNumber.valueOf("0/15D68C50");

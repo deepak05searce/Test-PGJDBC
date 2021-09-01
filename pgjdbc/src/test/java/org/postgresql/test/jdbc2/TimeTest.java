@@ -15,6 +15,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +32,7 @@ import java.util.TimeZone;
  * problems from re-occurring ;-)
  *
  */
-public class TimeTest {
+public class TimeTest extends SetUpTearDownIMPL {
   private Connection con;
   private boolean testSetTime = false;
 

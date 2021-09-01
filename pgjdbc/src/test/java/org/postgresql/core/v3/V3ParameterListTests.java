@@ -10,6 +10,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.SQLException;
 
 /**
@@ -18,7 +20,7 @@ import java.sql.SQLException;
  * @author Jeremy Whiting jwhiting@redhat.com
  *
  */
-public class V3ParameterListTests {
+public class V3ParameterListTests extends SetUpTearDownIMPL {
   private TypeTransferModeRegistry transferModeRegistry;
 
   @Before

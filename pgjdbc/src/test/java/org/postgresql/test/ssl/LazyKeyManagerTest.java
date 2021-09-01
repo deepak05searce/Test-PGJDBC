@@ -12,6 +12,8 @@ import org.postgresql.test.TestUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.IOException;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
@@ -21,7 +23,7 @@ import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.PasswordCallback;
 import javax.security.auth.callback.UnsupportedCallbackException;
 
-public class LazyKeyManagerTest {
+public class LazyKeyManagerTest extends SetUpTearDownIMPL {
 
   @Test
   public void testLoadP12Key() throws Exception {

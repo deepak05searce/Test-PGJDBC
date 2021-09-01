@@ -14,6 +14,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -31,7 +33,7 @@ import javax.sql.rowset.serial.SerialBlob;
  * Test that oid/lob are accessible in concurrent connection, in presence of the lo_manage trigger.
  * Require the lo module accessible in $libdir
  */
-public class BlobTransactionTest {
+public class BlobTransactionTest extends SetUpTearDownIMPL {
   private Connection con;
   private Connection con2;
 

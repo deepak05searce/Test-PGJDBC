@@ -21,6 +21,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,7 +40,7 @@ import javax.naming.NamingException;
  *
  * @author Aaron Mulder (ammulder@chariotsolutions.com)
  */
-public abstract class BaseDataSourceTest {
+public abstract class BaseDataSourceTest extends SetUpTearDownIMPL {
   public static final String DATA_SOURCE_JNDI = "BaseDataSource";
 
   protected Connection con;

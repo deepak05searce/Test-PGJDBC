@@ -17,6 +17,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -25,7 +27,7 @@ import java.sql.Statement;
 /**
  * DataSource test to ensure the BaseConnection is configured with column sanitiser disabled.
  */
-public class CaseOptimiserDataSourceTest {
+public class CaseOptimiserDataSourceTest extends SetUpTearDownIMPL {
   private BaseDataSource bds;
   protected Connection conn;
 

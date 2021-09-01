@@ -15,6 +15,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +28,7 @@ import java.sql.Statement;
  * problems from re-occurring ;-)
  *
  */
-public class DateTest {
+public class DateTest extends SetUpTearDownIMPL {
   private Connection con;
 
   @Before

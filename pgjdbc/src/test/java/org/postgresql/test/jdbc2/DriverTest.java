@@ -17,6 +17,7 @@ import org.postgresql.PGProperty;
 import org.postgresql.test.TestUtil;
 import org.postgresql.util.LogWriterHandler;
 import org.postgresql.util.NullOutputStream;
+import org.postgresql.util.SetUpTearDownIMPL;
 import org.postgresql.util.URLCoder;
 
 import org.junit.Test;
@@ -38,7 +39,7 @@ import java.util.logging.Logger;
  * Tests the dynamically created class org.postgresql.Driver
  *
  */
-public class DriverTest {
+public class DriverTest extends SetUpTearDownIMPL {
 
   @Test
   public void urlIsNotForPostgreSQL() throws SQLException {

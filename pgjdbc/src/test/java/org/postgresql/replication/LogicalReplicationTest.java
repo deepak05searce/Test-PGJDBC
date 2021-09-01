@@ -28,6 +28,8 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.rules.ExpectedException;
 
+import org.postgresql.util.SetUpTearDownIMPL;
+
 import java.nio.ByteBuffer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,7 +48,7 @@ import java.util.concurrent.TimeoutException;
 
 @Category(Replication.class)
 @HaveMinimalServerVersion("9.4")
-public class LogicalReplicationTest {
+public class LogicalReplicationTest extends SetUpTearDownIMPL {
   private static final String SLOT_NAME = "pgjdbc_logical_replication_slot";
 
   @Rule
