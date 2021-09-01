@@ -13,7 +13,7 @@ nbproject
 *.iml
 *.ipr
 *.iws
-*.local.properties
+
 *-dist.zip
 *.po.~*~
 target/
