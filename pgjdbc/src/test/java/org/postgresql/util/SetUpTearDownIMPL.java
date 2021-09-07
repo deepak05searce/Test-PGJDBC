@@ -3,9 +3,15 @@ package org.postgresql.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import java.util.Date;
@@ -80,28 +86,53 @@ public abstract class SetUpTearDownIMPL {
 
     String finalPath =  System.getProperty("user.dir") + "/Wireshark-Logs/JDBC/" + ts + "/"+"Java"+ "/" + filePath;
       String logFilePath = finalPath;
-   System.out.println(logFilePath+".pcapng");
-    File f = new File(finalPath);
-    f.getParentFile().mkdirs();
+   System.out.println(logFilePath);
+    Path path = Paths.get(logFilePath);
+    Files.createDirectories(path);
 
-    System.out.println("starting wiresharklog");
+        boolean t = Files.exists(path);
+        System.out.println(t);
+//
+// Process process;
+//
+//     process = Runtime.getRuntime().exec(String.format("chmod -R 777 "+logFilePath));
+//
+//     process = Runtime.getRuntime().exec(String.format("tshark -i any  -f \"host " + "192.168.29.250"  + " && port " + "5432" + "\" -w " + logFilePath +"/" + ".pcapng &"));
+//     System.out.println("starting wiresharklog");
     ProcessBuilder processBuilder = new ProcessBuilder();
+// processBuilder.command("sh","-c","ls");
+// processBuilder.command("sh","-c","chmod -R 777 "+logFilePath+"/");
+processBuilder.command("sh","-c","sudo tshark -i any -f \"host 192.168.34.49 && port 5432\" -w " + logFilePath +"/testing.pcapng &") ;
+   Process process ;
+   Process process1 ;
+   System.out.println("Logfile Path :"+logFilePath);
+    process1 = Runtime.getRuntime()
+        .exec((String.format("sh","-c","chmod -R 777 %s", logFilePath)));
+    process = Runtime.getRuntime()
+        .exec((String.format("sh -c tshark -i any -f \"host 192.168.34.49 && port 5432\" -w %s/testing.pcapng &",logFilePath)));
+    //process.waitFor();
+    Thread.sleep(5000);
+    StreamGobbler streamGobbler =
+         new StreamGobbler(process.getInputStream(), System.out::println);
+    Executors.newSingleThreadExecutor().submit(streamGobbler);
 
-   processBuilder.command("sudo tshark -i any  -f \"host " + System.getProperty("server", "localhost")  + " && port " + Integer.parseInt(System.getProperty("port", System.getProperty("def_pgport", "5432"))) + "\" -w " + logFilePath + ".pcapng &") ;
-    Process process = processBuilder.start();
 
+
+//
    System.out.println(System.getProperty("server", "localhost")+ "  "+ Integer.parseInt(System.getProperty("port", System.getProperty("def_pgport", "5432"))));
 
-    StringBuilder output = new StringBuilder();
-
-   BufferedReader reader = new BufferedReader(
-       new InputStreamReader(process.getInputStream()));
-
-    String line;
-    while ((line = reader.readLine()) != null) {
-      output.append(line + "\n");
-    }
-    System.out.println(output);
+//     StringBuilder output = new StringBuilder();
+//
+//    BufferedReader reader = new BufferedReader(
+//        new InputStreamReader(process.getInputStream()));
+//
+//     String line;
+//     while ((line = reader.readLine()) != null) {
+//       output.append(line + "\n");
+//     }
+//     System.out.println(output);
+    //int exitCode = process.waitFor();
+    //System.out.println("Exit code: "+exitCode);
     TimeUnit.SECONDS.sleep(5);
     Timestamp instant = Timestamp.from(Instant.now());
     results = arrOfStr[n-1];
@@ -113,28 +144,30 @@ public abstract class SetUpTearDownIMPL {
 
   @AfterClass
   public static void afterCl() throws InterruptedException, IOException {
-    String className = classWatcher.getClassName();
-    //Here now finally is FooTest!
-    Timestamp instant= Timestamp.from(Instant.now());
-
-    String[] arrOfStr = className.split("\\.");
-
-    n = arrOfStr.length;
-
-    if(n <=0)
-      return;
-    results = arrOfStr[n-1];
-    System.out.println("Tear down and Kill the wireshark");
-
-    ProcessBuilder processBuilder = new ProcessBuilder();
-    processBuilder.command("ps aux | grep tshark | awk 'NR==1 {print $2}' | sudo xargs kill");
-   Process process = processBuilder.start();
-
-    TimeUnit.SECONDS.sleep(5);
-
-    System.out.println("execution  of "+results+ " finished at time "+instant );
-
-    System.out.println(" path of your test class " + className);
+//     String className = classWatcher.getClassName();
+//     //Here now finally is FooTest!
+//     Timestamp instant= Timestamp.from(Instant.now());
+//
+//     String[] arrOfStr = className.split("\\.");
+//
+//     n = arrOfStr.length;
+//
+//     if(n <=0)
+//       return;
+//     results = arrOfStr[n-1];
+//     System.out.println("Tear down and Kill the wireshark");
+//
+//     Process process;
+//     process = Runtime.getRuntime().exec(String.format("ps aux | grep tshark | awk 'NR==1 {print $2}' | sudo xargs kill"));
+//   //  ProcessBuilder processBuilder = new ProcessBuilder();
+//   //  processBuilder.command("ps aux | grep tshark | awk 'NR==1 {print $2}' | sudo xargs kill");
+//  //  Process process = processBuilder.start();
+//
+//     TimeUnit.SECONDS.sleep(5);
+//
+//     System.out.println("execution  of "+results+ " finished at time "+instant );
+//
+//     System.out.println(" path of your test class " + className);
   }
 
   public void setTimeStamp2(int timeStamp2) {
