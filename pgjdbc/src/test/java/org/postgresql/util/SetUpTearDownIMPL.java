@@ -99,17 +99,20 @@ public abstract class SetUpTearDownIMPL {
 //
 //     process = Runtime.getRuntime().exec(String.format("tshark -i any  -f \"host " + "192.168.29.250"  + " && port " + "5432" + "\" -w " + logFilePath +"/" + ".pcapng &"));
 //     System.out.println("starting wiresharklog");
-    ProcessBuilder processBuilder = new ProcessBuilder();
+   // ProcessBuilder processBuilder = new ProcessBuilder();
 // processBuilder.command("sh","-c","ls");
 // processBuilder.command("sh","-c","chmod -R 777 "+logFilePath+"/");
-processBuilder.command("sh","-c","sudo tshark -i any -f \"host 192.168.34.49 && port 5432\" -w " + logFilePath +"/testing.pcapng &") ;
+//processBuilder.command("sh","-c","sudo tshark -i any -f \"host 192.168.34.49 && port 5432\" -w " + logFilePath +"/testing.pcapng &") ;
    Process process ;
    Process process1 ;
    System.out.println("Logfile Path :"+logFilePath);
     process1 = Runtime.getRuntime()
         .exec((String.format("sh","-c","chmod -R 777 %s", logFilePath)));
+
+   // System.out.println((String.format("sh","-c","tshark","-i","any","-f\"host 192.168.152.49 && port 5432\"", "-w"," %s/testing.pcapng &",logFilePath)));
+   String logFileNamePath = logFilePath+"/testing.pcapng";
     process = Runtime.getRuntime()
-        .exec((String.format("sh -c tshark -i any -f \"host 192.168.34.49 && port 5432\" -w %s/testing.pcapng &",logFilePath)));
+        .exec((String.format("sh","-c","tshark","-i","any","-w",logFileNamePath,"-f","\"host 192.168.34.49 && port 5432\"")));
     //process.waitFor();
     Thread.sleep(5000);
     StreamGobbler streamGobbler =
