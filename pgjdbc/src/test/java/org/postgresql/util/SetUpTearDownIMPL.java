@@ -21,6 +21,16 @@ public abstract class SetUpTearDownIMPL {
   private static String results;
   private static Object InterruptedException;
   private static Object IOException;
+  private static boolean b=false;
+
+  static Date now = new java.util.Date();
+  static Timestamp current = new java.sql.Timestamp(now.getTime());
+
+//   public static void fillTimeStamp() {
+//     Date now = new java.util.Date();
+//     Timestamp current = new java.sql.Timestamp(now.getTime());
+//     String t = new SimpleDateFormat("yyyyMMddHHmmss").format(current);
+//   }
 
   @ClassRule
   public static CustomTestWatcher classWatcher = new CustomTestWatcher();
@@ -48,8 +58,6 @@ public abstract class SetUpTearDownIMPL {
   @BeforeClass
   public static void beforeCl() throws InterruptedException, IOException {
     //Here now finally is FooTest!
-    Date now = new java.util.Date();
-    Timestamp current = new java.sql.Timestamp(now.getTime());
     String ts = new SimpleDateFormat("yyyyMMddHHmmss").format(current);
     String className = classWatcher.getClassName();//
     String filePath = className.replace('.', '/');
