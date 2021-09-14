@@ -21,6 +21,7 @@ public  class StreamGobbler implements Runnable {
     this.consumer = consumer;
   }
 
+
   @Override
   public void run() {
     final BufferedReader reader;
