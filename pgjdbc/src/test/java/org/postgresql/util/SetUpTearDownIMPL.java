@@ -1,8 +1,6 @@
 package org.postgresql.util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,11 +18,11 @@ import org.junit.*;
 
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
+import org.omg.SendingContext.RunTime;
 //import org.postgresql.util.Constants;
 
 //import org.postgresql.util.GetClassName;
 
-import java.io.File;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -107,16 +105,29 @@ public abstract class SetUpTearDownIMPL {
    Process process1 ;
    System.out.println("Logfile Path :"+logFilePath);
     process1 = Runtime.getRuntime()
-        .exec((String.format("sh","-c","chmod -R 777 %s", logFilePath)));
+        .exec("sh -c chmod -R 777 "+ logFilePath);
 
    // System.out.println((String.format("sh","-c","tshark","-i","any","-f\"host 192.168.152.49 && port 5432\"", "-w"," %s/testing.pcapng &",logFilePath)));
    String logFileNamePath = logFilePath+"/testing.pcapng";
-    process = Runtime.getRuntime()
-        .exec((String.format("sh","-c","tshark","-i","any","-w",logFileNamePath,"-f","\"host 192.168.34.49 && port 5432\"")));
+
+    Runtime currentRuneTime = Runtime.getRuntime();
+    //process = currentRuneTime.exec("sh -c echo hello123 > "+logFileNamePath);
+    process = currentRuneTime.exec("tshark -i any -f \"host 192.168.182.49 && port 5432\"  -w "+logFileNamePath+" &");
+    //tshark -i any -f "host 192.168.34.49 && port 5432" -w log.pcapng
+    //System.out.println(currentRuneTime.totalMemory());
+
+
+    //    .exec("sh -c tshark -i any -f \"host 192.168.34.49 && port 5432\" -w " + logFileNamePath + " &");
+   // process = Runtime.getRuntime()
+    //         .exec((String.format("sh","-c","tshark -i any -f \"host 192.168.152.49 && port
+    //         5432\" -w  %s/testing.pcapng &",logFilePath)));
+    // process = Runtime.getRuntime()
+    //         .exec((String.format("sh","-c","tshark -i any -f \"host 192.168.152.49 && port
+    //         5432\" -w  %s/testing.pcapng &",logFilePath)));
     //process.waitFor();
     Thread.sleep(5000);
     StreamGobbler streamGobbler =
-         new StreamGobbler(process.getInputStream(), System.out::println);
+         new StreamGobbler(process.getInputStream(),logFileNamePath);
     Executors.newSingleThreadExecutor().submit(streamGobbler);
 
 
