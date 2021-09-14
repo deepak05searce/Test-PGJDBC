@@ -15,6 +15,8 @@ import org.junit.*;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
+import org.postgresql.test.TestUtil;
+
 public abstract class SetUpTearDownIMPL {
 
   private static int n;
@@ -71,19 +73,21 @@ public abstract class SetUpTearDownIMPL {
     boolean t = Files.exists(path);
     System.out.println(t);
 
-    String dbhost = System.getProperty("server", System.getProperty("PGXHOST","127.0.0.1"));
-    String dbport = System.getProperty("port", System.getProperty("port", System.getProperty(
-        "PGXPORT", "5432")));
+    String dbhost = TestUtil.getServer();
+    String dbport = String.valueOf(TestUtil.getPort());
+
 
      System.out.println(dbhost+" "+dbport);
     Process process;
 //    Process process1 ;
 //    System.out.println("Logfile Path :"+logFilePath);
 //     process1 = Runtime.getRuntime().exec("sh -c chmod -R 777 "+ logFilePath);
+    String tr = "sh -c chmod -R 777 "+ logFilePath;
     String logFileNamePath = logFilePath + "/testing.pcapng";
+    String cmd = "tshark -w "+logFileNamePath;
+    String[] cmdArr = new String[]{"tshark","-f","host "+dbhost+" && port "+dbport,"-w", logFileNamePath};
     Runtime currentRuneTime = Runtime.getRuntime();
-    process =
-        currentRuneTime.exec("tshark -f \"host " + dbhost + " && port " + dbport + "\" -w " + logFileNamePath + " &");
+    process = currentRuneTime.exec(cmdArr);
 
     Thread.sleep(5000);
     StreamGobbler streamGobbler =
@@ -100,11 +104,11 @@ public abstract class SetUpTearDownIMPL {
   public static void afterCl() throws InterruptedException, IOException {
     System.out.println("Tear down and Kill the wireshark");
     Process process;
-    process = Runtime.getRuntime().exec(String.format("ps aux | grep tshark | awk 'NR==1 {print " +
-        "$2}' | sudo xargs kill"));
+    String[] cmdArr = new String[]{"ps","ax","|","grep","tshark","|","awk","{print $1}","sudo","xargs","kill"};
+    process = Runtime.getRuntime().exec(cmdArr);
     TimeUnit.SECONDS.sleep(5);
   }
-}
+ }
 
 
 
