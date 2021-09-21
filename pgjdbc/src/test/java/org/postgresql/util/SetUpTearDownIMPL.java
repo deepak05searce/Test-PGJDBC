@@ -60,39 +60,45 @@ public abstract class SetUpTearDownIMPL {
   @BeforeClass
   public static void beforeCl() throws InterruptedException, IOException {
     //Here now finally is FooTest!
-    String ts = new SimpleDateFormat("yyyyMMddHHmmss").format(current);
-    String className = classWatcher.getClassName();//
-    String filePath = className.replace('.', '/');
-    String finalPath = System.getProperty("user.dir") + "/Wireshark-Logs/JDBC/" + ts + "/" +
+    Process process; // process object
+
+    String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(current);
+    String classPathName = classWatcher.getClassName();//
+      int index = getClassFolderPath(classPathName);
+    String className = classPathName.substring(index+1);
+      classPathName = classPathName.substring(0,index);
+
+    String filePath = classPathName.replace('.', '/');
+    //String className = classPathName.substring(index+1);
+    String logFilePath = System.getProperty("user.dir") + "/Wireshark-Logs/JDBC/" + timeStamp + "/" +
         "Java" + "/" + filePath;
-    String logFilePath = finalPath;
-    System.out.println(logFilePath);
     Path path = Paths.get(logFilePath);
     Files.createDirectories(path);
-
-    boolean t = Files.exists(path);
-    System.out.println(t);
-
+    boolean isPath = Files.exists(path);
     String dbhost = TestUtil.getServer();
     String dbport = String.valueOf(TestUtil.getPort());
-
-
-     System.out.println(dbhost+" "+dbport);
-    Process process;
-//    Process process1 ;
-//    System.out.println("Logfile Path :"+logFilePath);
-//     process1 = Runtime.getRuntime().exec("sh -c chmod -R 777 "+ logFilePath);
-    String tr = "sh -c chmod -R 777 "+ logFilePath;
-    String logFileNamePath = logFilePath + "/testing.pcapng";
+    String logFileNamePath = logFilePath+"/"+className+ ".pcapng";
     String cmd = "tshark -w "+logFileNamePath;
-    String[] cmdArr = new String[]{"tshark","-f","host "+dbhost+" && port "+dbport,"-w", logFileNamePath};
-    Runtime currentRuneTime = Runtime.getRuntime();
-    process = currentRuneTime.exec(cmdArr);
+    //String permissionCmdLogFilePath = "sh -c chmod -R 777 "+ logFilePath;
+    String[] tsharkRunCmd = new String[]{"tshark","-i","lo0","-f","host "+dbhost+" && port "+dbport,"-w", logFileNamePath};
+    String[] permissionCmdLogFilePath = new String[]{"chmod","-R","777", logFileNamePath};
+    //System.out.println("checking wheather the path exist :"+isPath);
+    System.out.println("logFilePath "+logFilePath);
+    System.setProperty("ssl","false");
+    System.out.println("dbhost :"+dbhost+" dbport :"+dbport);
 
-    Thread.sleep(5000);
-    StreamGobbler streamGobbler =
-        new StreamGobbler(process.getInputStream(), logFileNamePath + "-log");
-    Executors.newSingleThreadExecutor().submit(streamGobbler);
+    System.out.println("jdbc:postgresql://" + System.getProperty("server", "localhost") + ":"+Integer.parseInt(System.getProperty("port", System.getProperty("def_pgport", "5432"))) + "/"+
+        System.getProperty("database", "test"));
+    for(int i=0;i< tsharkRunCmd.length;i++)
+       System.out.print(tsharkRunCmd[i]+" ");
+    Runtime currentRuneTime = Runtime.getRuntime();
+    process = currentRuneTime.exec(tsharkRunCmd);
+    process = currentRuneTime.exec(tsharkRunCmd);
+
+    Thread.sleep(000);
+//     StreamGobbler streamGobbler =
+//         new StreamGobbler(process.getInputStream(), logFileNamePath + "-log");
+//     Executors.newSingleThreadExecutor().submit(streamGobbler);
 
     TimeUnit.SECONDS.sleep(5);
     Timestamp instant = Timestamp.from(Instant.now());
@@ -104,9 +110,22 @@ public abstract class SetUpTearDownIMPL {
   public static void afterCl() throws InterruptedException, IOException {
     System.out.println("Tear down and Kill the wireshark");
     Process process;
-    String[] cmdArr = new String[]{"ps","ax","|","grep","tshark","|","awk","{print $1}","sudo","xargs","kill"};
-    process = Runtime.getRuntime().exec(cmdArr);
+    String[] tsharkKillCmd = new String[]{"ps","ax","|","grep","tshark","|","awk","{print $1}","sudo","xargs","kill"};
+    process = Runtime.getRuntime().exec(tsharkKillCmd);
     TimeUnit.SECONDS.sleep(5);
+  }
+
+  public static int getClassFolderPath(String path){
+    int len = path.length();
+    int i;
+    for(i=len-1;i>=0;i--){
+        if(path.charAt(i)=='.'){
+          break;
+        }
+
+    }
+
+    return i;
   }
  }
 
