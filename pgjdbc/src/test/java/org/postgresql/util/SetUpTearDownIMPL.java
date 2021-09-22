@@ -84,7 +84,7 @@ public abstract class SetUpTearDownIMPL {
     String[] permissionCmdLogFilePath = new String[]{"chmod","-R","777", logFileNamePath};
     //System.out.println("checking wheather the path exist :"+isPath);
     System.out.println("logFilePath "+logFilePath);
-    System.setProperty("ssl","false");
+    //System.setProperty("ssl","false");
     System.out.println("dbhost :"+dbhost+" dbport :"+dbport);
 
     System.out.println("jdbc:postgresql://" + System.getProperty("server", "localhost") + ":"+Integer.parseInt(System.getProperty("port", System.getProperty("def_pgport", "5432"))) + "/"+
@@ -93,9 +93,9 @@ public abstract class SetUpTearDownIMPL {
        System.out.print(tsharkRunCmd[i]+" ");
     Runtime currentRuneTime = Runtime.getRuntime();
     process = currentRuneTime.exec(tsharkRunCmd);
-    process = currentRuneTime.exec(tsharkRunCmd);
 
-    Thread.sleep(000);
+
+   // Thread.sleep(000);
 //     StreamGobbler streamGobbler =
 //         new StreamGobbler(process.getInputStream(), logFileNamePath + "-log");
 //     Executors.newSingleThreadExecutor().submit(streamGobbler);
@@ -110,9 +110,11 @@ public abstract class SetUpTearDownIMPL {
   public static void afterCl() throws InterruptedException, IOException {
     System.out.println("Tear down and Kill the wireshark");
     Process process;
-    String[] tsharkKillCmd = new String[]{"ps","ax","|","grep","tshark","|","awk","{print $1}","sudo","xargs","kill"};
+    String[] tsharkKillCmd = new String[]{"sh","-c","ps","ax","|","grep","tshark","|","awk","\'{print $1}\'","|","sudo","xargs","kill"};
+    //String[] tshark = new String[]{"sudo","ps","o","pgid",",","args","|","grep","tshark:","|","sudo","awk" ,"{system(sudo kill --signal SIGSTOP -$1)}-"};
     process = Runtime.getRuntime().exec(tsharkKillCmd);
     TimeUnit.SECONDS.sleep(5);
+    System.out.println();
   }
 
   public static int getClassFolderPath(String path){
