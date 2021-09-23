@@ -100,7 +100,7 @@ public class TestUtil {
 
     String ssl = "";
     if (getSSL() != null) {
-      ssl = "&ssl=" + getSSL();
+      ssl = "&sslmode=disable&ssl=" + getSSL();
     }
 
     return "jdbc:postgresql://"

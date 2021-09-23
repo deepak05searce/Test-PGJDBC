@@ -80,8 +80,8 @@ public abstract class SetUpTearDownIMPL {
     String logFileNamePath = logFilePath+"/"+className+ ".pcapng";
     String cmd = "tshark -w "+logFileNamePath;
     //String permissionCmdLogFilePath = "sh -c chmod -R 777 "+ logFilePath;
-    String[] tsharkRunCmd = new String[]{"tshark","-i","lo0","-f","host "+dbhost+" && port "+dbport,"-w", logFileNamePath};
-    String[] permissionCmdLogFilePath = new String[]{"chmod","-R","777", logFileNamePath};
+    String[] tsharkRunCmd = new String[]{"tshark","-f","host "+dbhost+" && port "+dbport,"-w", logFileNamePath};
+   // String[] permissionCmdLogFilePath = new String[]{"chmod","-R","777", logFileNamePath};
     //System.out.println("checking wheather the path exist :"+isPath);
     System.out.println("logFilePath "+logFilePath);
     //System.setProperty("ssl","false");
@@ -110,7 +110,7 @@ public abstract class SetUpTearDownIMPL {
   public static void afterCl() throws InterruptedException, IOException {
     System.out.println("Tear down and Kill the wireshark");
     Process process;
-    String[] tsharkKillCmd = new String[]{"sh","-c","ps","ax","|","grep","tshark","|","awk","\'{print $1}\'","|","sudo","xargs","kill"};
+    String[] tsharkKillCmd = new String[]{"sh","-c","ps ax | grep tshark | awk '{print $1}' | xargs kill"};
     //String[] tshark = new String[]{"sudo","ps","o","pgid",",","args","|","grep","tshark:","|","sudo","awk" ,"{system(sudo kill --signal SIGSTOP -$1)}-"};
     process = Runtime.getRuntime().exec(tsharkKillCmd);
     TimeUnit.SECONDS.sleep(5);
