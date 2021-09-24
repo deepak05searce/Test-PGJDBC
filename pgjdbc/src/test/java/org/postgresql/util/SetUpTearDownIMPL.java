@@ -7,9 +7,9 @@ import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.Date;
 
 import org.junit.*;
 import org.junit.rules.TestWatcher;
@@ -67,11 +67,27 @@ public abstract class SetUpTearDownIMPL {
       int index = getClassFolderPath(classPathName);
     String className = classPathName.substring(index+1);
       classPathName = classPathName.substring(0,index);
-
+    System.out.println(System.getProperty("database"));
     String filePath = classPathName.replace('.', '/');
+    ArrayList<String> logPathArr = new ArrayList<String>();
+    String wiresharkLogPath = System.getProperty("WIRESHARK_LOG_OUTPUT_DIR", "");
+    if (wiresharkLogPath.equals("") && Files.exists(Paths.get(wiresharkLogPath))) {
+      String[] fullPath = System.getProperty("user.dir").split("/");
+      System.out.println(System.getProperty("user.dir"));
+      for (String folder : fullPath) {
+        logPathArr.add(folder);
+        if (folder.contains("pgjdbc")) {
+          break;
+        }
+      }
+    } else {
+      logPathArr = new ArrayList<String>(Arrays.asList(wiresharkLogPath.split("/")));
+    }
     //String className = classPathName.substring(index+1);
-    String logFilePath = System.getProperty("user.dir") + "/Wireshark-Logs/JDBC/" + timeStamp + "/" +
+    String logFilePath = String.join("/",logPathArr) + "/Wireshark-Logs/JDBC/" + timeStamp + "/" +
         "Java" + "/" + filePath;
+
+    System.out.println(logFilePath);
     Path path = Paths.get(logFilePath);
     Files.createDirectories(path);
     boolean isPath = Files.exists(path);
@@ -87,8 +103,8 @@ public abstract class SetUpTearDownIMPL {
     //System.setProperty("ssl","false");
     System.out.println("dbhost :"+dbhost+" dbport :"+dbport);
 
-    System.out.println("jdbc:postgresql://" + System.getProperty("server", "localhost") + ":"+Integer.parseInt(System.getProperty("port", System.getProperty("def_pgport", "5432"))) + "/"+
-        System.getProperty("database", "test"));
+    System.out.println("jdbc:postgresql://" + System.getProperty("server") + ":"+Integer.parseInt(System.getProperty("port")) + "/"+
+        System.getProperty("database"));
     for(int i=0;i< tsharkRunCmd.length;i++)
        System.out.print(tsharkRunCmd[i]+" ");
     Runtime currentRuneTime = Runtime.getRuntime();
