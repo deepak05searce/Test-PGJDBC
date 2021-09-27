@@ -37,6 +37,8 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import static java.lang.Integer.parseInt;
+
 /**
  * Utility class for JDBC tests.
  */
@@ -116,11 +118,8 @@ public class TestUtil {
         + sendBufferSize
         + ssl;
   }
-
-  /*
-   * Returns the Test server
-   */
   public static String getServer() {
+   // return System.getenv("server");
     return System.getProperty("server", "localhost");
   }
 
@@ -128,7 +127,8 @@ public class TestUtil {
    * Returns the Test port
    */
   public static int getPort() {
-    return Integer.parseInt(System.getProperty("port", System.getProperty("def_pgport")));
+    return parseInt(System.getenv("port"));
+   // return Integer.parseInt(System.getProperty("port", System.getProperty("def_pgport")));
   }
 
   /*
@@ -150,21 +150,22 @@ public class TestUtil {
    * Returns the Test database
    */
   public static String getDatabase() {
-    return System.getProperty("database");
+    return System.getenv("database");
+    //return System.getProperty("database");
   }
 
   /*
    * Returns the Postgresql username
    */
   public static String getUser() {
-    return System.getProperty("username");
+    return System.getenv("username");
   }
 
   /*
    * Returns the user's password
    */
   public static String getPassword() {
-    return System.getProperty("password");
+    return System.getenv("password");
   }
 
   /*

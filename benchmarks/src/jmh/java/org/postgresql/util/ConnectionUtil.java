@@ -9,25 +9,30 @@ import org.postgresql.PGProperty;
 
 import java.util.Properties;
 
+import static java.lang.Integer.parseInt;
+
 public class ConnectionUtil {
   /**
    * @return the Postgresql username
    */
   public static String getUser() {
-    return System.getProperty("user", "test");
+    return System.getenv("username");
+    //return System.getProperty("user", "test");
   }
 
   /**
    * @return the user's password
    */
   public static String getPassword() {
-    return System.getProperty("password", "password");
+    return System.getenv("password");
+    //return System.getProperty("password", "password");
   }
 
   /**
    * @return the test server
    */
   public static String getServer() {
+   // return System.getenv("server");
     return System.getProperty("server", "localhost");
   }
 
@@ -35,7 +40,8 @@ public class ConnectionUtil {
    * @return the test port
    */
   public static int getPort() {
-    return Integer.parseInt(System.getProperty("port", System.getProperty("def_pgport", "5432")));
+    return parseInt(System.getenv("port"));
+    //return Integer.parseInt(System.getProperty("port", System.getProperty("def_pgport", "5432")));
   }
 
   /**
