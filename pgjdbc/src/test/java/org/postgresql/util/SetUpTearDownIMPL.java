@@ -67,7 +67,7 @@ public abstract class SetUpTearDownIMPL {
       int index = getClassFolderPath(classPathName);
     String className = classPathName.substring(index+1);
       classPathName = classPathName.substring(0,index);
-    System.out.println(System.getProperty("database"));
+    System.out.println(System.getenv("database"));
     String filePath = classPathName.replace('.', '/');
     ArrayList<String> logPathArr = new ArrayList<String>();
     String wiresharkLogPath = System.getProperty("WIRESHARK_LOG_OUTPUT_DIR", "");
@@ -103,8 +103,8 @@ public abstract class SetUpTearDownIMPL {
     //System.setProperty("ssl","false");
     System.out.println("dbhost :"+dbhost+" dbport :"+dbport);
 
-    System.out.println("jdbc:postgresql://" + System.getProperty("server") + ":"+Integer.parseInt(System.getProperty("port")) + "/"+
-        System.getProperty("database"));
+    System.out.println("jdbc:postgresql://" + dbhost + ":"+dbport + "/"+
+        System.getenv("database"));
     for(int i=0;i< tsharkRunCmd.length;i++)
        System.out.print(tsharkRunCmd[i]+" ");
     Runtime currentRuneTime = Runtime.getRuntime();
@@ -130,7 +130,7 @@ public abstract class SetUpTearDownIMPL {
     //String[] tshark = new String[]{"sudo","ps","o","pgid",",","args","|","grep","tshark:","|","sudo","awk" ,"{system(sudo kill --signal SIGSTOP -$1)}-"};
     process = Runtime.getRuntime().exec(tsharkKillCmd);
     TimeUnit.SECONDS.sleep(5);
-    System.out.println();
+
   }
 
   public static int getClassFolderPath(String path){
