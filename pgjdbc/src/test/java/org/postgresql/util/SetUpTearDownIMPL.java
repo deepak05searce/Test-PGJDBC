@@ -70,8 +70,10 @@ public abstract class SetUpTearDownIMPL {
     System.out.println(System.getenv("database"));
     String filePath = classPathName.replace('.', '/');
     ArrayList<String> logPathArr = new ArrayList<String>();
-    String wiresharkLogPath = System.getProperty("WIRESHARK_LOG_OUTPUT_DIR", "");
-    if (wiresharkLogPath.equals("") && Files.exists(Paths.get(wiresharkLogPath))) {
+    System.out.println(System.getenv("WIRESHARK_LOG_OUTPUT_DIR"));
+    String wiresharkLogPath ="";
+    wiresharkLogPath=System.getenv("WIRESHARK_LOG_OUTPUT_DIR");
+    if (wiresharkLogPath==null || wiresharkLogPath.equals("")) {
       String[] fullPath = System.getProperty("user.dir").split("/");
       System.out.println(System.getProperty("user.dir"));
       for (String folder : fullPath) {
