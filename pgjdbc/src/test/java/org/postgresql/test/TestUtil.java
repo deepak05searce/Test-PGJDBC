@@ -119,8 +119,8 @@ public class TestUtil {
         + ssl;
   }
   public static String getServer() {
-   // return System.getenv("server");
-    return System.getProperty("server", "localhost");
+    return System.getenv("server");
+   // return System.getProperty("server", "localhost");
   }
 
   /*
